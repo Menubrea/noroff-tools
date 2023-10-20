@@ -31,12 +31,17 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             sx={{
               padding: 0.5,
               borderRadius: 1,
-              boxShadow: "0 0 10px 1px #00000018",
+              boxShadow: "0 0 10px 1px #00000010",
             }}
           />
-          Student Toolbox
+          Delivery Name Generator
         </Typography>
+        {/* <Box sx={{ display: "flex", gap: 2 }}>
+          <CustomLink href="/">Name Generator</CustomLink>
+          <CustomLink href="/report-template">Report Template</CustomLink>
+        </Box> */}
       </Box>
+
       <Box component={"main"}>{children}</Box>
       <Box
         sx={{
