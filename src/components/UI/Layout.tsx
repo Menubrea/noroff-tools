@@ -65,7 +65,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             fontWeight: 700,
             textDecoration: "none",
           }}
-          href="https://github.com/Menubrea"
+          href="https://github.com/Menubrea/noroff-tools"
           target="_blank"
           rel="noopener"
         >
