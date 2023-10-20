@@ -16,6 +16,6 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-image: url("/src/assets/background.webp");
+  background-image: url("/src/assets/bground.jpg");
   background-size: cover;
 }

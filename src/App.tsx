@@ -1,16 +1,16 @@
 import "./App.css";
+import { Layout } from "./components";
+import { CodeGeneratorPage, ReportTemplatePage } from "./components/pages";
 
 function App() {
+  const route = window.location.pathname;
+
   return (
     <>
-      <div>
-        <p>
-          Week number. (DOT) Short course code. (DOT) Your first name. (DOT) The
-          first letter of your surname. For example, to submit a course
-          assignment for w04 (design foundations), the files submitted by John
-          Doe and Sarah Iversen must be named like this:
-        </p>
-      </div>
+      <Layout>
+        {route === "/" && <CodeGeneratorPage />}
+        {route === "/report-template" && <ReportTemplatePage />}
+      </Layout>
     </>
   );
 }
