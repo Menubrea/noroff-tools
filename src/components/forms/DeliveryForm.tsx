@@ -63,7 +63,7 @@ const DeliveryForm = () => {
     const initialData = storedData ? JSON.parse(storedData) : {};
     const { weekNum, subject, firstName, lastName } = initialData;
 
-    setWeekNum(weekNum || 1);
+    setWeekNum(weekNum || 0);
     setSubject(subject || subjects[0].code);
     setFirstName(firstName || "Ola");
     setFirstLetterSurname(lastName || "o");
@@ -110,9 +110,17 @@ const DeliveryForm = () => {
       });
   }
 
-  let result = `w${
-    weekNum && weekNum < 10 ? "0" + weekNum : weekNum
-  }.${subject.toLowerCase()}.${firstName.toLowerCase()}.${firstLetterSurname.toLowerCase()}`;
+  let weekNumString;
+
+  if (weekNum && weekNum < 10) {
+    weekNumString = "0" + weekNum;
+  } else if (weekNum === 0) {
+    weekNumString = "00";
+  } else {
+    weekNumString = weekNum;
+  }
+
+  let result = `w${weekNumString}.${subject.toLowerCase()}.${firstName.toLowerCase()}.${firstLetterSurname.toLowerCase()}`;
 
   return (
     <Box>
