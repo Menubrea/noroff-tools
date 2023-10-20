@@ -1,27 +1,18 @@
-# React + TypeScript + Vite
+# Delivery Code Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple code generator to match Noroff UI Design delivery syntax. Built using Vite React TypeScript template and Material UI.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Stores data in browser memory for convenient use.
+- In order from left to right: `Academic Week number`, `Subject Name rendered as shorthand delivery code`, `First name` and `First letter of surname`.
 
-## Expanding the ESLint configuration
+## For the future
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Convert to PWA to run as native.
+- Harvard Reference generator.
+- Potentially expand to cover more courses.
+- Improve on design (currently not a focus).
+- Code Refactor.
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### PR's welcome.
