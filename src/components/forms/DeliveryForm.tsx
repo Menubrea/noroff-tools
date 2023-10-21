@@ -14,6 +14,10 @@ import React, { useEffect, useState } from "react";
 
 const subjects = [
   {
+    name: "Introduction Course",
+    code: "IC",
+  },
+  {
     name: "Design Foundations",
     code: "DF",
   },
@@ -57,6 +61,8 @@ const DeliveryForm = () => {
   const [firstName, setFirstName] = useState("Ola");
   const [firstLetterSurname, setFirstLetterSurname] = useState("o");
   const [wasCopied, setWasCopied] = useState(false);
+  const storedData = localStorage.getItem("data");
+  const initialData = storedData ? JSON.parse(storedData) : {};
 
   useEffect(() => {
     const storedData = localStorage.getItem("data");
@@ -69,32 +75,15 @@ const DeliveryForm = () => {
     setFirstLetterSurname(lastName || "o");
   }, []);
 
-  const storedData = localStorage.getItem("data");
-  const initialData = storedData ? JSON.parse(storedData) : {};
-
-  const handleWeekNumChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newData = { ...initialData, weekNum: Number(event.target.value) };
-    setWeekNum(Number(event.target.value));
+  function handleChange(
+    event: React.ChangeEvent<HTMLInputElement> | SelectChangeEvent<string>,
+    key: string,
+    setState: React.Dispatch<React.SetStateAction<string | number>>
+  ): void {
+    const newData = { ...initialData, [key]: event.target.value };
+    setState(event.target.value);
     localStorage.setItem("data", JSON.stringify(newData));
-  };
-
-  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newData = { ...initialData, firstName: event.target.value };
-    setFirstName(event.target.value);
-    localStorage.setItem("data", JSON.stringify(newData));
-  };
-
-  const handleSurNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newData = { ...initialData, lastName: event.target.value };
-    setFirstLetterSurname(event.target.value);
-    localStorage.setItem("data", JSON.stringify(newData));
-  };
-
-  const handleSubjectChange = (event: SelectChangeEvent<string>) => {
-    const newData = { ...initialData, subject: event.target.value };
-    setSubject(event.target.value);
-    localStorage.setItem("data", JSON.stringify(newData));
-  };
+  }
 
   function copyToClipboard(text: string) {
     navigator.clipboard
@@ -111,7 +100,6 @@ const DeliveryForm = () => {
   }
 
   let weekNumString;
-
   if (weekNum && weekNum < 10) {
     weekNumString = "0" + weekNum;
   } else if (weekNum === 0) {
@@ -147,7 +135,9 @@ const DeliveryForm = () => {
         <TextField
           fullWidth
           value={weekNum}
-          onChange={handleWeekNumChange}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            handleChange(e, "weekNum", (value) => setWeekNum(Number(value)))
+          }
           label="Week"
           variant="outlined"
           type="number"
@@ -159,7 +149,9 @@ const DeliveryForm = () => {
             labelId="subject"
             label="Subject"
             value={subject}
-            onChange={handleSubjectChange}
+            onChange={(e: SelectChangeEvent<string>) =>
+              handleChange(e, "subject", (value) => setSubject(String(value)))
+            }
           >
             {subjects.map((subject) => (
               <MenuItem value={subject.code}>{subject.name}</MenuItem>
@@ -171,7 +163,9 @@ const DeliveryForm = () => {
           label="Name"
           variant="outlined"
           value={firstName}
-          onChange={handleNameChange}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            handleChange(e, "firstName", (value) => setFirstName(String(value)))
+          }
           inputProps={{ minLength: 1 }}
         />
         <TextField
@@ -180,7 +174,11 @@ const DeliveryForm = () => {
           variant="outlined"
           title="Please only enter the first letter of your surname"
           value={firstLetterSurname}
-          onChange={handleSurNameChange}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            handleChange(e, "lastName", (value) =>
+              setFirstLetterSurname(String(value))
+            )
+          }
           inputProps={{ maxLength: 1 }}
         />
       </Box>
