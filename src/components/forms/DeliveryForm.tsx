@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { SelectChangeEvent } from "@mui/material/Select";
 import React, { useEffect, useState } from "react";
+import { StringGenerator } from "..";
 
 const subjects = [
   {
@@ -59,8 +60,7 @@ const DeliveryForm = () => {
   const [weekNum, setWeekNum] = useState(1);
   const [subject, setSubject] = useState(subjects[0].code);
   const [firstName, setFirstName] = useState("Ola");
-  const [firstLetterSurname, setFirstLetterSurname] = useState("o");
-  const [wasCopied, setWasCopied] = useState(false);
+  const [firstLetterSurname, setFirstLetterSurname] = useState("N");
   const storedData = localStorage.getItem("data");
   const initialData = storedData ? JSON.parse(storedData) : {};
 
@@ -72,7 +72,7 @@ const DeliveryForm = () => {
     setWeekNum(weekNum || 0);
     setSubject(subject || subjects[0].code);
     setFirstName(firstName || "Ola");
-    setFirstLetterSurname(lastName || "o");
+    setFirstLetterSurname(lastName || "N");
   }, []);
 
   function handleChange(
@@ -83,20 +83,6 @@ const DeliveryForm = () => {
     const newData = { ...initialData, [key]: event.target.value };
     setState(event.target.value);
     localStorage.setItem("data", JSON.stringify(newData));
-  }
-
-  function copyToClipboard(text: string) {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        setWasCopied(true);
-        setTimeout(() => {
-          setWasCopied(false);
-        }, 3000);
-      })
-      .catch((error) => {
-        alert("Error copying text to clipboard" + error);
-      });
   }
 
   let weekNumString;
@@ -114,12 +100,21 @@ const DeliveryForm = () => {
     <Box>
       <Box sx={{ marginBottom: 2, position: "relative" }}>
         <Typography
+          variant="h5"
+          sx={{
+            display: "flex",
+            gap: 2,
+            alignItems: "center",
+            color: "#2d5391",
+            fontWeight: 900,
+            textTransform: "uppercase",
+            letterSpacing: 8,
+            width: "fit-content",
+            marginX: "auto",
+            marginBottom: 6,
+            marginTop: 2,
+          }}
           component={"h1"}
-          fontSize={32}
-          fontWeight={700}
-          marginBottom={4}
-          color={"black"}
-          textAlign={"center"}
         >
           Delivery Name Generator
         </Typography>
@@ -127,9 +122,9 @@ const DeliveryForm = () => {
       <Box
         sx={{
           display: "flex",
+          flexDirection: { xs: "column", md: "row" },
           gap: 2,
-          justifyContent: "center",
-          width: "100%",
+          marginBlock: { xs: 1, md: 0 },
         }}
       >
         <TextField
@@ -182,43 +177,7 @@ const DeliveryForm = () => {
           inputProps={{ maxLength: 1 }}
         />
       </Box>
-      <Box
-        sx={{
-          boxShadow: "0 0 10px 1px #00000029",
-          color: "black",
-          padding: 2,
-          borderRadius: 2,
-          display: "flex",
-          justifyContent: "space-between",
-          gap: 4,
-          margin: "1em auto",
-          alignItems: "center",
-        }}
-      >
-        <Typography>
-          <Typography width={"max-content"} variant="h6" component={"p"}>
-            Generated string:
-          </Typography>
-        </Typography>
-        <Typography sx={{ width: "100%", textAlign: "right" }} fontSize={24}>
-          {result}
-        </Typography>
-        <Button
-          variant="contained"
-          disabled={wasCopied}
-          color={wasCopied ? "success" : "primary"}
-          onClick={() => copyToClipboard(result)}
-        >
-          {wasCopied ? "Copied" : "Copy"}
-        </Button>
-      </Box>
-      <Box sx={{ textAlign: "center" }}>
-        <Alert severity={wasCopied ? "success" : "info"}>
-          {wasCopied
-            ? "Copied to clipboard"
-            : 'Click "COPY to copy to clipboard'}
-        </Alert>
-      </Box>
+      <StringGenerator text={result} />
     </Box>
   );
 };

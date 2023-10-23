@@ -6,3 +6,6 @@ export * from "./UI";
 
 export * from "./links";
 // Path: src/components/links/index.ts
+
+export * from "./utilities";
+// Path: src/components/utilities/index.ts

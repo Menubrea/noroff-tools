@@ -1,6 +1,6 @@
 import "./App.css";
 import { Layout } from "./components";
-import { CodeGeneratorPage, ReportTemplatePage } from "./components/pages";
+import { CodeGeneratorPage, HarvardizeItPage } from "./components/pages";
 
 function App() {
   const route = window.location.pathname;
@@ -9,7 +9,7 @@ function App() {
     <>
       <Layout>
         {route === "/" && <CodeGeneratorPage />}
-        {route === "/report-template" && <ReportTemplatePage />}
+        {route === "/harvardize-it" && <HarvardizeItPage />}
       </Layout>
     </>
   );

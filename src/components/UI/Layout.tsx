@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Link } from "@mui/material";
-import ConstructionIcon from "@mui/icons-material/Construction";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import { CustomLink } from "../links";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -10,53 +10,49 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         component={"header"}
         sx={{
           display: "flex",
+          alignItems: "center",
           justifyContent: "space-between",
-          backgroundColor: "#fafafa",
-          padding: 2,
-          top: 0,
-          left: 0,
-          position: "fixed",
-          width: "calc(100% - 2rem)",
-          boxShadow: "0 0 10px 1px #00000019",
+          paddingX: { xs: 1, lg: 2 },
+          paddingBottom: 2,
+          width: { xs: "calc(100% - 1rem)", lg: "calc(100% - 2rem)" },
+          borderBottom: "1px solid #2d539118",
+          textAlign: "left",
         }}
       >
         <Typography
-          fontSize={20}
-          fontWeight={900}
+          variant="body1"
           component="div"
-          sx={{ display: "flex", gap: 1.5, alignItems: "center" }}
+          sx={{
+            color: "#2d5391",
+            fontWeight: 900,
+            textTransform: "uppercase",
+            letterSpacing: 8,
+          }}
         >
-          <ConstructionIcon
-            color="primary"
-            sx={{
-              padding: 0.5,
-              borderRadius: 1,
-              boxShadow: "0 0 10px 1px #00000010",
-            }}
-          />
-          Delivery Name Generator
+          Student Toolbox
         </Typography>
-        {/* <Box sx={{ display: "flex", gap: 2 }}>
+        <Box sx={{ display: "flex", gap: 0.5 }}>
           <CustomLink href="/">Name Generator</CustomLink>
-          <CustomLink href="/report-template">Report Template</CustomLink>
-        </Box> */}
+          <CustomLink href="/harvardize-it">Citation Generator</CustomLink>
+        </Box>
       </Box>
 
       <Box component={"main"}>{children}</Box>
       <Box
         sx={{
-          backgroundColor: "#fafafa",
-          padding: 2,
-          bottom: 0,
-          left: 0,
-          position: "fixed",
-          width: "calc(100% - 2rem)",
+          backgroundColor: "#ffffff",
+          paddingX: { xs: 1, lg: 2 },
+          paddingY: 1,
+          width: { xs: "calc(100% - 1rem)", lg: "calc(100% - 2rem)" },
           display: "flex",
+          alignItems: "center",
           justifyContent: "center",
         }}
         component={"footer"}
       >
-        <Box marginRight={1}>By Truls Haakenstad &copy; 2023 |</Box>
+        <Typography variant="body2" marginRight={1}>
+          By Truls Haakenstad &copy; 2023 |
+        </Typography>
         <Link
           sx={{
             display: "flex",
@@ -69,7 +65,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           target="_blank"
           rel="noopener"
         >
-          <GitHubIcon sx={{ fontSize: 20 }} />
+          <GitHubIcon sx={{ fontSize: 18 }} />
           Github
         </Link>
       </Box>
