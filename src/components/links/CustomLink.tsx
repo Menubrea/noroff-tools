@@ -9,7 +9,7 @@ interface ICustomLink {
 const CustomLink = ({ children, href }: ICustomLink) => {
   return (
     <Link href={href} sx={{ textDecoration: "none" }}>
-      <Button variant="outlined" color="primary">
+      <Button size="small" variant="outlined" color="primary">
         {children}
       </Button>
     </Link>
