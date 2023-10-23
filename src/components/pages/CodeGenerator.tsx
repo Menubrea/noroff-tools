@@ -6,7 +6,6 @@ const CodeGeneratorPage = () => {
     <Box
       sx={{
         padding: { xs: 2, lg: 4 },
-        borderRadius: 2,
       }}
     >
       <DeliveryForm />

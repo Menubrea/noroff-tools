@@ -32,7 +32,21 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         </Typography>
       </Box>
 
-      <Box component={"main"}>{children}</Box>
+      <Box
+        sx={{
+          minHeight: {
+            xs: "auto",
+            md: 565,
+          },
+          width: {
+            xs: "auto",
+            md: 950,
+          },
+        }}
+        component={"main"}
+      >
+        {children}
+      </Box>
       <Box
         sx={{
           backgroundColor: "#ffffff",

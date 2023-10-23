@@ -94,7 +94,7 @@ const DeliveryForm = () => {
   let result = `w${weekNumString}.${subject.toLowerCase()}.${firstName.toLowerCase()}.${firstLetterSurname.toLowerCase()}`;
 
   return (
-    <Box>
+    <>
       <Box
         sx={{
           display: "flex",
@@ -154,7 +154,7 @@ const DeliveryForm = () => {
         />
       </Box>
       <StringGenerator text={result} />
-    </Box>
+    </>
   );
 };
 
