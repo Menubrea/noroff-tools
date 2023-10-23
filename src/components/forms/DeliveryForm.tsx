@@ -1,7 +1,6 @@
 import {
   Box,
   TextField,
-  Typography,
   FormControl,
   InputLabel,
   Select,
@@ -96,27 +95,6 @@ const DeliveryForm = () => {
 
   return (
     <Box>
-      <Box sx={{ marginBottom: 2, position: "relative" }}>
-        <Typography
-          variant="h5"
-          sx={{
-            display: "flex",
-            gap: 2,
-            alignItems: "center",
-            color: "#2d5391",
-            fontWeight: 900,
-            textTransform: "uppercase",
-            letterSpacing: 8,
-            width: "fit-content",
-            marginX: "auto",
-            marginBottom: 6,
-            marginTop: 2,
-          }}
-          component={"h1"}
-        >
-          Delivery Name Generator
-        </Typography>
-      </Box>
       <Box
         sx={{
           display: "flex",

@@ -1,15 +1,11 @@
 import "./App.css";
-import { Layout } from "./components";
-import { CodeGeneratorPage, HarvardizeItPage } from "./components/pages";
+import { Layout, TabNav } from "./components";
 
 function App() {
-  const route = window.location.pathname;
-
   return (
     <>
       <Layout>
-        {route === "/" && <CodeGeneratorPage />}
-        {route === "/harvardize-it" && <HarvardizeItPage />}
+        <TabNav />
       </Layout>
     </>
   );

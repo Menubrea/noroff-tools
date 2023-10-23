@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Typography, Link } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { CustomLink } from "../links";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -31,10 +30,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         >
           Student Toolbox
         </Typography>
-        <Box sx={{ display: "flex", gap: 0.5 }}>
-          <CustomLink href="/">Name Generator</CustomLink>
-          <CustomLink href="/harvardize-it">Citation Generator</CustomLink>
-        </Box>
       </Box>
 
       <Box component={"main"}>{children}</Box>
